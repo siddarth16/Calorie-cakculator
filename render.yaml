@@ -6,9 +6,9 @@ services:
     staticPublishPath: ./dist
     envVars:
       - key: NODE_VERSION
-        value: 18.0.0
+        value: 20.0.0
       - key: NPM_VERSION
-        value: 9.0.0
+        value: 10.0.0
     routes:
       - type: rewrite
         source: /*

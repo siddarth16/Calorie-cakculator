@@ -3,9 +3,10 @@
   "version": "1.0.0",
   "description": "A comprehensive calorie calculator web application with BMR and TDEE calculations",
   "main": "index.js",
+  "type": "module",
   "engines": {
-    "node": ">=18.0.0",
-    "npm": ">=9.0.0"
+    "node": ">=20.0.0",
+    "npm": ">=10.0.0"
   },
   "scripts": {
     "dev": "vite",
