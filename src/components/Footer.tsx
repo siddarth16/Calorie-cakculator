@@ -57,9 +57,13 @@ const Footer: React.FC = () => {
 
         {/* Additional Info */}
         <div className="mt-6 pt-6 border-t border-gray-200 dark:border-gray-700 text-center">
-          <p className="text-xs text-gray-500 dark:text-gray-400">
+          <p className="text-xs text-gray-500 dark:text-gray-400 mb-2">
             This calculator uses the Mifflin-St Jeor formula for BMR calculation. 
             Results are estimates and should not replace professional medical advice.
+          </p>
+          <p className="text-xs text-gray-500 dark:text-gray-400">
+            Free calorie calculator for weight loss, weight gain, and maintenance. 
+            Calculate your daily calorie needs with our BMR and TDEE calculator.
           </p>
         </div>
       </div>

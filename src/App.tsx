@@ -88,16 +88,22 @@ const App: React.FC = () => {
       <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Hero Section */}
         {!result && (
-          <div className="text-center mb-12 animate-fade-in">
+          <section className="text-center mb-12 animate-fade-in">
             <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
-              Calculate Your Daily
-              <span className="text-gradient"> Calorie Needs</span>
+              Free Calorie Calculator
+              <span className="text-gradient"> - Calculate BMR & TDEE</span>
             </h1>
-            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto mb-6">
               Get personalized calorie recommendations based on your age, weight, height, 
-              activity level, and fitness goals using the scientifically validated Mifflin-St Jeor formula.
+              activity level, and fitness goals using the scientifically validated <strong>Mifflin-St Jeor formula</strong>.
             </p>
-          </div>
+            <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-4 max-w-3xl mx-auto">
+              <p className="text-sm text-blue-800 dark:text-blue-200">
+                <strong>What you'll get:</strong> BMR (Basal Metabolic Rate), TDEE (Total Daily Energy Expenditure), 
+                and personalized calorie recommendations for weight loss, maintenance, or weight gain.
+              </p>
+            </div>
+          </section>
         )}
 
         {/* Main Content */}

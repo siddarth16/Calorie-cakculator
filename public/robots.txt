@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://your-calorie-calculator.onrender.com/sitemap.xml
+
+# Crawl-delay
+Crawl-delay: 1 
