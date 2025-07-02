@@ -69,16 +69,17 @@ const CalorieForm: React.FC<CalorieFormProps> = ({ onSubmit, isLoading }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6">
+    <form onSubmit={handleSubmit} className="space-y-8">
       {/* Personal Information */}
-      <div className="form-section">
-        <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
+      <div className="space-y-8">
+        <h3 className="text-3xl font-bold text-white mb-8 flex items-center animate-fade-in-down">
+          <span className="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center mr-4 glow-effect">👤</span>
           Personal Information
         </h3>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div>
-            <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="animate-fade-in-up" style={{animationDelay: '0.1s'}}>
+            <label htmlFor="name" className="block text-lg font-semibold text-white/90 mb-3">
               Name (Optional)
             </label>
             <input
@@ -91,8 +92,8 @@ const CalorieForm: React.FC<CalorieFormProps> = ({ onSubmit, isLoading }) => {
             />
           </div>
           
-          <div>
-            <label htmlFor="age" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+          <div className="animate-fade-in-up" style={{animationDelay: '0.2s'}}>
+            <label htmlFor="age" className="block text-lg font-semibold text-white/90 mb-3">
               Age *
             </label>
             <input
@@ -108,11 +109,11 @@ const CalorieForm: React.FC<CalorieFormProps> = ({ onSubmit, isLoading }) => {
           </div>
         </div>
 
-        <div>
-          <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+        <div className="animate-fade-in-up" style={{animationDelay: '0.3s'}}>
+          <label className="block text-lg font-semibold text-white/90 mb-4">
             Gender *
           </label>
-          <div className="flex space-x-4">
+          <div className="flex space-x-6">
             {['male', 'female', 'other'].map((gender) => (
               <label key={gender} className="flex items-center">
                 <input
@@ -121,10 +122,10 @@ const CalorieForm: React.FC<CalorieFormProps> = ({ onSubmit, isLoading }) => {
                   value={gender}
                   checked={formData.gender === gender}
                   onChange={(e) => handleInputChange('gender', e.target.value as 'male' | 'female' | 'other')}
-                  className="mr-2"
+                  className="mr-3 w-5 h-5 text-blue-500 bg-white/10 border-white/20 focus:ring-blue-500/30"
                   required
                 />
-                <span className="text-sm text-gray-700 dark:text-gray-300 capitalize">
+                <span className="text-lg text-white/80 capitalize">
                   {gender}
                 </span>
               </label>

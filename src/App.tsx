@@ -66,15 +66,25 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors duration-200">
+    <div className="min-h-screen bg-black relative overflow-hidden">
+      {/* Animated Background */}
+      <div className="fixed inset-0 z-0">
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-900/20 via-purple-900/20 to-pink-900/20"></div>
+        <div className="absolute top-0 left-0 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-rotate-slow"></div>
+        <div className="absolute top-1/2 right-0 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-rotate-slow" style={{animationDelay: '-10s'}}></div>
+        <div className="absolute bottom-0 left-1/2 w-96 h-96 bg-pink-500/10 rounded-full blur-3xl animate-rotate-slow" style={{animationDelay: '-5s'}}></div>
+      </div>
+
       <Toaster
         position="top-right"
         toastOptions={{
           duration: 4000,
           style: {
-            background: darkMode ? '#374151' : '#ffffff',
-            color: darkMode ? '#f9fafb' : '#111827',
-            border: darkMode ? '1px solid #4b5563' : '1px solid #e5e7eb',
+            background: 'rgba(255, 255, 255, 0.1)',
+            backdropFilter: 'blur(20px)',
+            color: '#ffffff',
+            border: '1px solid rgba(255, 255, 255, 0.2)',
+            borderRadius: '16px',
           },
         }}
       />
@@ -85,31 +95,41 @@ const App: React.FC = () => {
         onShowAbout={handleShowAbout}
       />
 
-      <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <main className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Hero Section */}
         {!result && (
-          <section className="text-center mb-12 animate-fade-in">
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
-              Free Calorie Calculator
-              <span className="text-gradient"> - Calculate BMR & TDEE</span>
-            </h1>
-            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto mb-6">
-              Get personalized calorie recommendations based on your age, weight, height, 
-              activity level, and fitness goals using the scientifically validated <strong>Mifflin-St Jeor formula</strong>.
-            </p>
-            <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-4 max-w-3xl mx-auto">
-              <p className="text-sm text-blue-800 dark:text-blue-200">
-                <strong>What you'll get:</strong> BMR (Basal Metabolic Rate), TDEE (Total Daily Energy Expenditure), 
-                and personalized calorie recommendations for weight loss, maintenance, or weight gain.
+          <section className="text-center mb-20">
+            <div className="glass-card glass-card-hover p-12 mb-12 animate-fade-in-up">
+              <h1 className="text-6xl md:text-7xl font-bold text-white mb-6 text-glow">
+                Calorie
+                <span className="hero-gradient bg-clip-text text-transparent"> Calculator</span>
+              </h1>
+              <p className="text-2xl text-white/80 max-w-4xl mx-auto mb-8 leading-relaxed">
+                Calculate your daily calorie needs with scientific precision using the 
+                <span className="text-blue-400 font-semibold"> Mifflin-St Jeor formula</span>
               </p>
+              <div className="flex flex-wrap justify-center gap-4 text-lg text-white/70">
+                <span className="flex items-center gap-2">
+                  <div className="w-3 h-3 bg-blue-500 rounded-full animate-bounce-gentle"></div>
+                  BMR Calculator
+                </span>
+                <span className="flex items-center gap-2">
+                  <div className="w-3 h-3 bg-purple-500 rounded-full animate-bounce-gentle" style={{animationDelay: '0.5s'}}></div>
+                  TDEE Calculator
+                </span>
+                <span className="flex items-center gap-2">
+                  <div className="w-3 h-3 bg-pink-500 rounded-full animate-bounce-gentle" style={{animationDelay: '1s'}}></div>
+                  Weight Goals
+                </span>
+              </div>
             </div>
           </section>
         )}
 
         {/* Main Content */}
-        <div className="space-y-8">
+        <div className="space-y-12">
           {!result ? (
-            <div className="card animate-slide-up">
+            <div className="glass-card glass-card-hover p-8 animate-scale-in">
               <CalorieForm onSubmit={handleFormSubmit} isLoading={isLoading} />
             </div>
           ) : (
@@ -123,40 +143,40 @@ const App: React.FC = () => {
 
         {/* Features Section */}
         {!result && (
-          <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 animate-fade-in">
-            <div className="text-center">
-              <div className="w-12 h-12 bg-primary-100 dark:bg-primary-900/20 rounded-lg flex items-center justify-center mx-auto mb-4">
-                <span className="text-2xl">🧮</span>
+          <div className="mt-24 grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="glass-card glass-card-hover p-8 text-center animate-fade-in-up" style={{animationDelay: '0.2s'}}>
+              <div className="w-20 h-20 bg-gradient-to-br from-blue-500 to-purple-600 rounded-3xl flex items-center justify-center mx-auto mb-6 glow-effect">
+                <span className="text-3xl">🧮</span>
               </div>
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
-                Accurate Calculations
+              <h3 className="text-2xl font-bold text-white mb-4">
+                Scientific Accuracy
               </h3>
-              <p className="text-gray-600 dark:text-gray-300">
-                Uses the scientifically validated Mifflin-St Jeor formula for precise BMR and TDEE calculations.
+              <p className="text-white/70 leading-relaxed">
+                Powered by the validated Mifflin-St Jeor formula for precise BMR and TDEE calculations.
               </p>
             </div>
             
-            <div className="text-center">
-              <div className="w-12 h-12 bg-success-100 dark:bg-success-900/20 rounded-lg flex items-center justify-center mx-auto mb-4">
-                <span className="text-2xl">🎯</span>
+            <div className="glass-card glass-card-hover p-8 text-center animate-fade-in-up" style={{animationDelay: '0.4s'}}>
+              <div className="w-20 h-20 bg-gradient-to-br from-purple-500 to-pink-600 rounded-3xl flex items-center justify-center mx-auto mb-6 glow-effect">
+                <span className="text-3xl">🎯</span>
               </div>
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
+              <h3 className="text-2xl font-bold text-white mb-4">
                 Personalized Goals
               </h3>
-              <p className="text-gray-600 dark:text-gray-300">
-                Get recommendations for weight loss, maintenance, or weight gain based on your specific goals.
+              <p className="text-white/70 leading-relaxed">
+                Get tailored recommendations for weight loss, maintenance, or weight gain.
               </p>
             </div>
             
-            <div className="text-center">
-              <div className="w-12 h-12 bg-warning-100 dark:bg-warning-900/20 rounded-lg flex items-center justify-center mx-auto mb-4">
-                <span className="text-2xl">📱</span>
+            <div className="glass-card glass-card-hover p-8 text-center animate-fade-in-up" style={{animationDelay: '0.6s'}}>
+              <div className="w-20 h-20 bg-gradient-to-br from-pink-500 to-red-600 rounded-3xl flex items-center justify-center mx-auto mb-6 glow-effect">
+                <span className="text-3xl">📱</span>
               </div>
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
-                Mobile Friendly
+              <h3 className="text-2xl font-bold text-white mb-4">
+                Modern Design
               </h3>
-              <p className="text-gray-600 dark:text-gray-300">
-                Fully responsive design that works perfectly on desktop, tablet, and mobile devices.
+              <p className="text-white/70 leading-relaxed">
+                Beautiful, responsive interface that works seamlessly across all devices.
               </p>
             </div>
           </div>

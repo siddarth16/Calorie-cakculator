@@ -10,17 +10,22 @@ const AboutModal: React.FC<AboutModalProps> = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
-      <div className="bg-white dark:bg-gray-800 rounded-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
-        <div className="p-6">
+    <div className="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 z-50">
+      <div className="glass-card rounded-3xl max-w-4xl w-full max-h-[90vh] overflow-y-auto animate-scale-in">
+        <div className="p-8">
           {/* Header */}
-          <div className="flex items-center justify-between mb-6">
-            <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
-              About Calorie Calculator
-            </h2>
+          <div className="flex items-center justify-between mb-8">
+            <div className="flex items-center">
+              <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center mr-4 glow-effect">
+                <Calculator className="w-6 h-6 text-white" />
+              </div>
+              <h2 className="text-3xl font-bold text-white text-glow">
+                About Calorie Calculator
+              </h2>
+            </div>
             <button
               onClick={onClose}
-              className="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition-colors"
+              className="text-white/60 hover:text-white hover:bg-white/10 p-3 rounded-2xl transition-all duration-300 hover:scale-110"
             >
               <X size={24} />
             </button>

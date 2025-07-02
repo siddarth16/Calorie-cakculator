@@ -4,50 +4,196 @@
 
 @layer base {
   html {
-    font-family: 'Inter', system-ui, sans-serif;
+    font-family: 'SF Pro Display', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    scroll-behavior: smooth;
   }
   
   body {
-    @apply bg-gray-50 text-gray-900 transition-colors duration-200;
+    @apply bg-black text-white overflow-x-hidden;
+    background: radial-gradient(ellipse at top, #1a1a1a 0%, #000000 100%);
   }
   
-  .dark body {
-    @apply bg-gray-900 text-gray-100;
+  * {
+    @apply transition-all duration-300 ease-out;
   }
 }
 
 @layer components {
+  .glass-card {
+    @apply backdrop-blur-xl bg-white/10 border border-white/20 rounded-3xl shadow-2xl;
+  }
+  
+  .glass-card-hover {
+    @apply hover:bg-white/15 hover:border-white/30 hover:scale-105;
+  }
+  
   .btn-primary {
-    @apply bg-primary-600 hover:bg-primary-700 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2;
+    @apply bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold py-4 px-8 rounded-2xl 
+           hover:from-blue-600 hover:to-purple-700 hover:scale-105 hover:shadow-2xl
+           focus:outline-none focus:ring-4 focus:ring-blue-500/30 focus:scale-105
+           transform transition-all duration-300 ease-out;
   }
   
   .btn-secondary {
-    @apply bg-gray-200 hover:bg-gray-300 text-gray-900 font-medium py-2 px-4 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2;
+    @apply bg-white/10 backdrop-blur-sm text-white font-semibold py-4 px-8 rounded-2xl border border-white/20
+           hover:bg-white/20 hover:border-white/30 hover:scale-105 hover:shadow-2xl
+           focus:outline-none focus:ring-4 focus:ring-white/30 focus:scale-105
+           transform transition-all duration-300 ease-out;
   }
   
   .input-field {
-    @apply w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-colors duration-200;
+    @apply w-full px-6 py-4 bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl
+           text-white placeholder-white/60 focus:outline-none focus:ring-4 focus:ring-blue-500/30
+           focus:bg-white/15 focus:border-white/30 focus:scale-105
+           transform transition-all duration-300 ease-out;
   }
   
-  .card {
-    @apply bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700;
+  .hero-gradient {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background-size: 400% 400%;
+    animation: gradientShift 8s ease infinite;
   }
   
-  .form-section {
-    @apply space-y-4 p-6;
+  .floating-card {
+    animation: float 6s ease-in-out infinite;
   }
   
-  .result-card {
-    @apply bg-gradient-to-br from-primary-50 to-primary-100 dark:from-primary-900 dark:to-primary-800 border border-primary-200 dark:border-primary-700;
+  .glow-effect {
+    box-shadow: 0 0 40px rgba(102, 126, 234, 0.3);
+  }
+  
+  .text-glow {
+    text-shadow: 0 0 20px rgba(102, 126, 234, 0.5);
+  }
+  
+  .parallax-bg {
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
   }
 }
 
 @layer utilities {
-  .text-gradient {
-    @apply bg-gradient-to-r from-primary-600 to-primary-800 bg-clip-text text-transparent;
+  .animate-fade-in-up {
+    animation: fadeInUp 0.8s ease-out forwards;
   }
   
-  .animate-pulse-slow {
-    animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  .animate-fade-in-down {
+    animation: fadeInDown 0.8s ease-out forwards;
   }
+  
+  .animate-scale-in {
+    animation: scaleIn 0.6s ease-out forwards;
+  }
+  
+  .animate-slide-in-left {
+    animation: slideInLeft 0.8s ease-out forwards;
+  }
+  
+  .animate-slide-in-right {
+    animation: slideInRight 0.8s ease-out forwards;
+  }
+  
+  .animate-bounce-gentle {
+    animation: bounceGentle 2s ease-in-out infinite;
+  }
+  
+  .animate-rotate-slow {
+    animation: rotateSlow 20s linear infinite;
+  }
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes bounceGentle {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes rotateSlow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #5a6fd8, #6a4190);
 } 

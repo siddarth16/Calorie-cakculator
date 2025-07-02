@@ -4,7 +4,6 @@ module.exports = {
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
-  darkMode: 'class',
   theme: {
     extend: {
       colors: {
@@ -46,12 +45,21 @@ module.exports = {
         },
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
+        sans: ['SF Pro Display', 'Inter', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
       },
       animation: {
         'fade-in': 'fadeIn 0.5s ease-in-out',
         'slide-up': 'slideUp 0.3s ease-out',
         'bounce-in': 'bounceIn 0.6s ease-out',
+        'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
+        'fade-in-down': 'fadeInDown 0.8s ease-out forwards',
+        'scale-in': 'scaleIn 0.6s ease-out forwards',
+        'slide-in-left': 'slideInLeft 0.8s ease-out forwards',
+        'slide-in-right': 'slideInRight 0.8s ease-out forwards',
+        'float': 'float 6s ease-in-out infinite',
+        'rotate-slow': 'rotateSlow 20s linear infinite',
+        'gradient-shift': 'gradientShift 8s ease infinite',
+        'bounce-gentle': 'bounceGentle 2s ease-in-out infinite',
       },
       keyframes: {
         fadeIn: {
@@ -68,6 +76,46 @@ module.exports = {
           '70%': { transform: 'scale(0.9)' },
           '100%': { transform: 'scale(1)', opacity: '1' },
         },
+        fadeInUp: {
+          'from': { opacity: '0', transform: 'translateY(30px)' },
+          'to': { opacity: '1', transform: 'translateY(0)' },
+        },
+        fadeInDown: {
+          'from': { opacity: '0', transform: 'translateY(-30px)' },
+          'to': { opacity: '1', transform: 'translateY(0)' },
+        },
+        scaleIn: {
+          'from': { opacity: '0', transform: 'scale(0.8)' },
+          'to': { opacity: '1', transform: 'scale(1)' },
+        },
+        slideInLeft: {
+          'from': { opacity: '0', transform: 'translateX(-50px)' },
+          'to': { opacity: '1', transform: 'translateX(0)' },
+        },
+        slideInRight: {
+          'from': { opacity: '0', transform: 'translateX(50px)' },
+          'to': { opacity: '1', transform: 'translateX(0)' },
+        },
+        float: {
+          '0%, 100%': { transform: 'translateY(0px)' },
+          '50%': { transform: 'translateY(-20px)' },
+        },
+        rotateSlow: {
+          'from': { transform: 'rotate(0deg)' },
+          'to': { transform: 'rotate(360deg)' },
+        },
+        gradientShift: {
+          '0%': { backgroundPosition: '0% 50%' },
+          '50%': { backgroundPosition: '100% 50%' },
+          '100%': { backgroundPosition: '0% 50%' },
+        },
+        bounceGentle: {
+          '0%, 100%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(-10px)' },
+        },
+      },
+      backdropBlur: {
+        xs: '2px',
       },
     },
   },

@@ -61,71 +61,85 @@ ${result.summary}`;
   };
 
   return (
-    <div className="space-y-6 animate-fade-in">
+    <div className="space-y-12 animate-fade-in-up">
+      {/* Header */}
+      <div className="text-center animate-fade-in-down">
+        <h2 className="text-5xl font-bold text-white mb-6 text-glow">
+          Your Results
+        </h2>
+        <p className="text-xl text-white/80 max-w-3xl mx-auto leading-relaxed">
+          {result.summary}
+        </p>
+      </div>
+
       {/* Main Result Card */}
-      <div className="result-card rounded-xl p-6">
-        <div className="flex items-start justify-between mb-4">
+      <div className="glass-card glass-card-hover p-12 animate-scale-in">
+        <div className="flex items-start justify-between mb-8">
           <div>
-            <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+            <h2 className="text-4xl font-bold text-white mb-4">
               Your Daily Calorie Needs
             </h2>
-            <p className="text-gray-600 dark:text-gray-400">
+            <p className="text-xl text-white/80">
               {result.summary}
             </p>
           </div>
           <button
             onClick={onReset}
-            className="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition-colors"
+            className="text-white/60 hover:text-white hover:bg-white/10 p-3 rounded-2xl transition-all duration-300 hover:scale-110"
           >
-            <X size={20} />
+            <X size={24} />
           </button>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-          <div className="text-center p-4 bg-white dark:bg-gray-800 rounded-lg">
-            <div className="text-sm text-gray-600 dark:text-gray-400 mb-1">BMR</div>
-            <div className="text-2xl font-bold text-primary-600 dark:text-primary-400">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+          <div className="text-center p-8 glass-card glass-card-hover animate-fade-in-up" style={{animationDelay: '0.1s'}}>
+            <div className="w-20 h-20 bg-gradient-to-br from-blue-500 to-purple-600 rounded-3xl flex items-center justify-center mx-auto mb-4 glow-effect">
+              <span className="text-2xl">🔥</span>
+            </div>
+            <div className="text-lg text-white/70 mb-2">BMR</div>
+            <div className="text-4xl font-bold text-blue-400 mb-2">
               {result.bmr.toLocaleString()}
             </div>
-            <div className="text-xs text-gray-500 dark:text-gray-500">calories/day</div>
+            <div className="text-sm text-white/50">calories/day</div>
           </div>
           
-          <div className="text-center p-4 bg-white dark:bg-gray-800 rounded-lg">
-            <div className="text-sm text-gray-600 dark:text-gray-400 mb-1">TDEE</div>
-            <div className="text-2xl font-bold text-primary-600 dark:text-primary-400">
+          <div className="text-center p-8 glass-card glass-card-hover animate-fade-in-up" style={{animationDelay: '0.3s'}}>
+            <div className="w-20 h-20 bg-gradient-to-br from-purple-500 to-pink-600 rounded-3xl flex items-center justify-center mx-auto mb-4 glow-effect">
+              <span className="text-2xl">⚡</span>
+            </div>
+            <div className="text-lg text-white/70 mb-2">TDEE</div>
+            <div className="text-4xl font-bold text-purple-400 mb-2">
               {result.tdee.toLocaleString()}
             </div>
-            <div className="text-xs text-gray-500 dark:text-gray-500">calories/day</div>
+            <div className="text-sm text-white/50">calories/day</div>
           </div>
         </div>
 
         {/* Action Buttons */}
-        <div className="flex flex-wrap gap-3">
+        <div className="flex flex-wrap justify-center gap-6">
           <button
             onClick={downloadPDF}
-            className="flex items-center px-4 py-2 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
+            className="btn-primary flex items-center text-lg px-8 py-4"
           >
-            <Download size={16} className="mr-2" />
+            <Download size={20} className="mr-3" />
             Save as PDF
           </button>
           
           <button
             onClick={copyToClipboard}
-            className={`flex items-center px-4 py-2 rounded-lg transition-colors ${
-              copied 
-                ? 'bg-success-100 dark:bg-success-900/20 text-success-700 dark:text-success-300' 
-                : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700'
+            className={`btn-secondary flex items-center text-lg px-8 py-4 ${
+              copied ? 'bg-green-500/20 border-green-500/30 text-green-300' : ''
             }`}
           >
-            <Copy size={16} className="mr-2" />
+            <Copy size={20} className="mr-3" />
             {copied ? 'Copied!' : 'Copy Results'}
           </button>
           
           <button
             onClick={shareResults}
-            className="flex items-center px-4 py-2 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
+            className="btn-secondary flex items-center text-lg px-8 py-4"
           >
-            <Share2 size={16} className="mr-2" />
+            <Share2 size={20} className="mr-3" />
             Share
           </button>
         </div>
